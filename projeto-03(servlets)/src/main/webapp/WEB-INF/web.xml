@@ -28,5 +28,23 @@
     <servlet-name>Hello</servlet-name>
     <url-pattern>/Hello</url-pattern>
   </servlet-mapping>
-
+  <filter>
+    <display-name>HelloFilter</display-name>
+    <filter-name>HelloFilter</filter-name>
+    <filter-class>mandacaru.dev.HelloFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>HelloFilter</filter-name>
+    <servlet-name>HelloNotations</servlet-name>
+  </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HelloNotations</display-name>
+    <servlet-name>HelloNotations</servlet-name>
+    <servlet-class>mandacaru.dev.HelloNotations</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HelloNotations</servlet-name>
+    <url-pattern>/HelloNotations</url-pattern>
+  </servlet-mapping>
 </web-app>

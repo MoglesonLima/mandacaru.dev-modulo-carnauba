@@ -1,6 +1,7 @@
 package mandacaru.dev;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,7 +13,6 @@ import java.io.IOException;
 /**
  * Servlet implementation class Hello
  */
-
 public class HelloNotations extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
