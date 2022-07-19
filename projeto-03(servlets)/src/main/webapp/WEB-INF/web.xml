@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" id="WebApp_ID" version="5.0">
+  <display-name>projeto-03</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <context-param>
+    <param-name>country</param-name>
+    <param-value>Brazil</param-value>
+  </context-param>
+  <servlet>
+    <description></description>
+    <display-name>Hello</display-name>
+    <servlet-name>Hello</servlet-name>
+    <servlet-class>mandacaru.dev.Hello</servlet-class>
+    <init-param>
+      <description>Dados do produto</description>
+      <param-name>nome</param-name>
+      <param-value>valor</param-value>
+    </init-param>
+    <init-param>
+      <description>notebook is red</description>
+      <param-name>product</param-name>
+      <param-value>notebook</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Hello</servlet-name>
+    <url-pattern>/Hello</url-pattern>
+  </servlet-mapping>
+
+</web-app>
