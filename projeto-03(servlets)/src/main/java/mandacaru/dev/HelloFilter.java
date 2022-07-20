@@ -46,17 +46,23 @@ public class HelloFilter extends HttpFilter implements Filter {
 
 		// This will print output on console
 		System.out.println("Before filter - Preprocessing before servlet");
+		
+		//acessando parametro na URL -> first_name
 		String firstName = request.getParameter("first_name");
 
+		//Aqui testamos se o first_name passado bate com mogly, aqui poderia ser a busca de user e senha em um DB
 		if (firstName.equals("mogly")) {
-			// some authentication if required
+			// some authentication if required - Caso bata com o que foi passado, permite o acessoa ao servlet
 			chain.doFilter(request, response);
-		} else {
+		} 
+		
+		else {
+			//caso contrario retorna uma pagina html...Com uma informação qualquer.
 			response.setContentType("text/html");
 			response.getWriter().append("Não autorizado");
 		}
 
-		// This will print output on console
+		// This will print output on console //Apenas uma msg no console para mostra que o filter foi usado
 		System.out.println("After servlet - Following code will execute after running the servlet - PostProcessing");
 	}
 
