@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Sample Thymeleaf template</title>
+</head>
+<body>
+	<!-- th: é uma diretiva do thymeleaf, onde na tag só será renderizado oq é infromado na diretiva!!! -->
+	<p th:text="|Hello, ${name}!|"></p>
+
+	<h2>Variable Expression Apenas text</h2>
+	<!-- Aqui usamos as variáveis passadas no servlet (pegando apenas como texto -> th:text)-->
+	<p th:text="${person.id}">ID:</p>
+	<p th:text="${person.name}">Name:</p>
+	<p>Address</p>
+	<p th:text="${person.address.street}">Street:</p>
+	<p th:text="${person.address.zipcode}">Zipcode:</p>
+
+	<h2>Selection Variable expression - Pegamos person como OBJ</h2>
+	<div th:object="${person}">
+		<p th:text="*{id}">ID:</p>
+		<p th:text="*{name}">Name:</p>
+		<p>Address</p>
+		<p th:text="*{address.street}">Street:</p>
+		<p th:text="*{address.zipCode}">Zipcode:</p>
+	</div>
+
+	<h2>Link URL Expression - Links</h2>
+	<!-- Aqui temos diversos exemplos acer de como estruturar links usando o thymeleaf -->
+	<p>
+		<a href="#" th:href="@{/user/1}"> Link 1 </a>
+	</p>
+	<p>
+		<a href="#" th:href="@{/user(id=${person.id},name=${person.name})}">Query
+			String URL </a>
+	</p>
+	<p>
+		<a href="#"
+			th:href="@{/user/{uid}/name/{uname}(uid=${person.id}, uname=${person.name})}">Path
+			Variable URL </a>
+	</p>
+
+	<h1>Conditional Expression in template</h1>
+	<h2>If-then (se algun address == null não será mostrado!!!)</h2>
+	<!-- Trabalhando condicionais (verificando se pessoa 01 e 02 tem Address)-->
+	<p th:text="${person01.address} ? ${person01.address.street}">Default
+		person1 Street</p>
+	<p th:text="${person02.address} ? ${person02.address.street}">Default
+		person2 Street</p>
+
+	<h2>If-then-else</h2>
+	<p
+		th:text="${person01.address} ? ${person01.address.zipcode} : 'not
+exist'">Default
+		Zipcode 1</p>
+	<p
+		th:text="${person02.address} ? ${person02.address.zipcode} : 'Person02
+does not have an address'">Default
+		Zipcode 2</p>
+
+	<h2>Elvis Operator</h2>
+	<p th:text="${person01.address}?:'not exist'">Default address1</p>
+	<p th:text="${person02.address}?:'Person2 does not have an
+address...'">Default
+		address2</p>
+
+	<h2>If-Unless</h2>
+	<p th:if="${person01.id == 1}" th:text="${person01.address}"></p>
+	<p th:unless="${person02.id == 1}" th:text="${person02.address}"></p>
+
+	<h1>Iteration Expression</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">ID</th>
+				<th scope="col">Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="p : ${people}">
+				<th scope="row" th:text="${p.id}">1</th>
+				<td th:text="${p.id}">1</td>
+				<td th:text="${p.name}">Otto</td>
+			</tr>
+		</tbody>
+	</table>
+	
+		<h1>Iteration Expression value 1 Coluna</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">ID</th>
+				<th scope="col">Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="p : ${people}">
+				<th >1</th>
+				<td th:text="${p.id}">1</td>
+				<td th:text="${p.name}">Otto</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	
+	<h1>Iteration Expression iter</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">ID</th>
+				<th scope="col">Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="p, iter : ${people}">
+				<th scope="row" th:text="${iter.index + 1}">1</th>
+				<td th:text="${p.id}">1</td>
+				<td th:text="${p.name}">Otto</td>
+			</tr>
+		</tbody>
+	</table>
+	
+		<h1>Explorando valor do iter</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">ID</th>
+				<th scope="col">Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="p, iter : ${people}">
+				<th scope="row" th:text="${iter}">1</th>
+				<td th:text="${p.id}">1</td>
+				<td th:text="${p.name}">Otto</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	
+
+</body>
+</html>
