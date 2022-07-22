@@ -1,5 +1,4 @@
 package mandacaru.dao;
-
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +9,7 @@ public class ConnectionFactory {
 	private static String url = null;
 	private static String user = null;
 	private static String password = null;
-
+	
 	public static Connection getConnection() {
 		try {
 			//Verficando se a url está vazia

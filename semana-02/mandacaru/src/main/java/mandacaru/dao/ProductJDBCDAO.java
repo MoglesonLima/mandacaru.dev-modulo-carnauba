@@ -42,5 +42,4 @@ public class ProductJDBCDAO implements ProductDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
 }
