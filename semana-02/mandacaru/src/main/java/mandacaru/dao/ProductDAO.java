@@ -4,19 +4,16 @@ import java.util.List;
 
 import mandacaru.entities.Product;
 
-//class interface... chamada de metodos
 public interface ProductDAO {
-	
-	public void save(Product entProduct);
-	
-	public void delete(int id);
-	
-	public Product findById(int id);
-	
-	public List<Product> findAll();
-	
-	public Product findByName(String str);
-	
-	public List<Product> findByAllName(String str);
-	
+	 public void save(Product entity);
+	 
+	    public void delete(int id);
+	 
+	    public Product find(int id);
+	 
+	    public List<Product> findAll();
+	    
+	    public Product findByName(String str);
+	 
+	    public List<Product> findAllByName(String str);
 }
